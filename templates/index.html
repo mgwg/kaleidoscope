@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Kaleidoscope</title>
+    <style>
+        html, body {
+            margin:0;
+            height:100%;
+        }
+        img {
+            display:block;
+            width:100%; height:100%;
+            object-fit: cover;
+        }
+    </style>
+
+  </head>
+  <body>
+    <img src="" id="imagebox">
+
+    <script>
+        var offsetX = 0
+        var offsetY = 0
+
+        imagebox = document.getElementById("imagebox")
+        imagebox.src = "./getimage?x=" + Math.round(0) + "&y=" + Math.round(0) +
+                       "&width=" + window.innerWidth + "&height=" + window.innerHeight
+
+        function click(e)  {
+            var mouseX = e.clientX + window.scrollX
+            var mouseY = e.clientY + window.scrollY
+
+            // Set image source
+            imagebox.src = "./getimage?x=" + Math.round(mouseX) + "&y=" + Math.round(mouseY) + 
+                           "&width=" + window.innerWidth + "&height=" + window.innerHeight
+        }
+
+        document.addEventListener("click", click); // add event
+
+    </script>
+
+  </body>
+</html>
