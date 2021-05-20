@@ -165,7 +165,7 @@ def kaleidoscope(img: Image.Image, mode=EQUILATERAL,
 
 def preprocess(image_name: str,
                x: int, y: int, width: int, height: int) -> Image.Image:
-    img = Image.open(image_name)
+    img = cv2.imread(image_name)
 
     offset_factor = math.sqrt(x*x + y*y) / \
         math.sqrt(width*width + height*height)
@@ -173,13 +173,13 @@ def preprocess(image_name: str,
     # calculate total normalized offset (between 0 and 1)
     # to apply transformation
 
-    overshoot = abs(img.size[1] - img.size[0])
-    if img.size[0] < img.size[1]:
+    overshoot = abs(img.shape[1] - img.shape[0])
+    if img.shape[1] < img.shape[0]:
         # image is taller than width
-        s = img.size[0]
+        s = img.shape[1]
         return img.crop((0, overshoot * offset_factor,
                          s, s + overshoot * offset_factor))
     else:
-        s = img.size[1]
+        s = img.shape[0]
         return img.crop((overshoot * offset_factor, 0,
                          s + overshoot * offset_factor, s))
