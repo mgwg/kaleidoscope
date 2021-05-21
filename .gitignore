@@ -1,3 +1,5 @@
 test.jpg
 test_images/*
 images.py
+test.py
+__pycache__

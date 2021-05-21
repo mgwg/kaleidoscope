@@ -10,7 +10,7 @@ RIGHT_DIAMOND = 3
 
 rotate = ndimage.rotate
 
-def make_triangle(img: Image.Image, mode: int = EQUILATERAL) -> Image.Image:
+def make_triangle(img: np.array, mode: int = EQUILATERAL) -> np.array:
     '''
     Produces triangular crop of image from a square image
     '''
@@ -32,7 +32,7 @@ def make_triangle(img: Image.Image, mode: int = EQUILATERAL) -> Image.Image:
     return triangle
 
 
-def reflect_triangle(triangle: Image.Image) -> Image.Image:
+def reflect_triangle(triangle: np.array) -> np.array:
     '''
     Returns triangle reflected.
     '''
@@ -44,7 +44,7 @@ def reflect_triangle(triangle: Image.Image) -> Image.Image:
     return output
 
 
-def make_trapezoid(triangle: Image.Image, mode: int = 0) -> Image.Image:
+def make_trapezoid(triangle: np.array, mode: int = 0) -> np.array:
     '''
     Creates a trapezoid out of 3 triangles.
     '''
@@ -71,7 +71,7 @@ def make_trapezoid(triangle: Image.Image, mode: int = 0) -> Image.Image:
 
     return output
 
-def make_unit(triangle: Image.Image, mode: int = EQUILATERAL) -> Image.Image:
+def make_unit(triangle: np.array, mode: int = EQUILATERAL) -> np.array:
 
     if mode == EQUILATERAL or mode == RIGHT_SCALENE:
         #make trapezoid first
@@ -103,8 +103,8 @@ def make_unit(triangle: Image.Image, mode: int = EQUILATERAL) -> Image.Image:
     
     return output
 
-def tessellate(img: Image.Image, dim: tuple = (1080, 1920),
-               n: int = 5, mode: int = 0) -> Image.Image:
+def tessellate(img: np.array, dim: tuple = (1080, 1920),
+               n: int = 5, mode: int = 0) -> np.array:
     '''
     dim = dimensions of final image as (height, width)
     n = number of horizontal repetitions
@@ -149,8 +149,8 @@ def tessellate(img: Image.Image, dim: tuple = (1080, 1920),
 
     return output
 
-def kaleidoscope(img: Image.Image, mode=EQUILATERAL,
-                 windowX: int = 1920, windowY: int = 1080) -> Image.Image:
+def kaleidoscope(img: np.array, mode=EQUILATERAL,
+                 windowY: int = 1080, windowX: int = 1920) -> np.array:
     '''
     mode = 0 (equilateral)
            1 (right-scalene)
@@ -160,11 +160,11 @@ def kaleidoscope(img: Image.Image, mode=EQUILATERAL,
     triangle = make_triangle(img, mode)
     unit = make_unit(triangle, mode)
 
-    return tessellate(unit, img.size[0], (windowX, windowY), 5, mode)
+    return tessellate(unit, (windowY, windowX), 5, mode)
 
 
 def preprocess(image_name: str,
-               x: int, y: int, width: int, height: int) -> Image.Image:
+               x: int, y: int, width: int, height: int) -> np.array:
     img = cv2.imread(image_name)
 
     offset_factor = math.sqrt(x*x + y*y) / \
@@ -183,3 +183,4 @@ def preprocess(image_name: str,
         s = img.shape[0]
         return img.crop((overshoot * offset_factor, 0,
                          s + overshoot * offset_factor, s))
+
