@@ -38,20 +38,24 @@ def pasteIm(paper: np.array, cutout: np.array, coord: tuple = (0,0)) -> np.array
   w, h, _ = paper.shape
   a, b = coord
 
-  # find opaque pixels in the image
   alpha = cutout[:,:,3]
-  replace = np.where(alpha == 225)
-  
-  l = []
-  for i in range(len(replace[0])):
-    l.append((replace[0][i], replace[1][i]))
-  
-  # only paste the opaque pixels and do some math so everything is indexed within bounds
-  for pixel in l:
-    if pixel[0] + a < w and pixel[1] + b < h:
-      paper[pixel[0]+a][pixel[1]+b]=cutout[pixel]
+  replace = np.where(alpha > 200) #==225
 
+  # only want points where destination coordinate is within image points
+  
+  xCuts = np.where(replace[0] + a < w)
+  yCuts = np.where(replace[1] + b < h)
+  indices = np.intersect1d(xCuts, yCuts)
+  
+  x = replace[0][indices]
+  y = replace[1][indices]
+  destx = x + a
+  desty = y + b
+
+  paper[destx,desty] = cutout[x,y]
+  
   return paper
+
 
 def maskIm(img: np.array , bounds: list) -> np.array:
   '''
