@@ -114,8 +114,8 @@ def make_unit(shape: Image.Image, mode: int = EQUILATERAL) -> Image.Image:
     return output
 
 
-def tessellate(shape: Image.Image, dim: tuple = (1920, 1080),
-               n: int = 5, mode: int = 0) -> Image.Image:
+def tessellate(shape: Image.Image, mode: int = 0, dim: tuple = (1920, 1080),
+               n: int = 5) -> Image.Image:
     '''
     dim = dimensions of final image
     n = number of horizontal repetitions
@@ -132,29 +132,29 @@ def tessellate(shape: Image.Image, dim: tuple = (1920, 1080),
     shape = shape.resize((w, h))
 
     if mode == EQUILATERAL or mode == RIGHT_SCALENE:
-        for j in range(-1, int(y/h)+2):
+        for j in range(-1, math.ceil(y/h)+1):
             # use 2 options to offset the pattern
             # start at -1 so left and upper edges are filled
             if not j % 2:
                 # TODO: Can we make this more efficient (i.e. not %2, by doing step = 2)
-                for i in range(int(x/w)+2):
+                for i in range(n+1):
                     output.paste(shape, (w*i, (int(h*3/4))*j), shape)
             else:
-                for i in range(-1, int(x/w)+2):
+                for i in range(-1, n+1):
                     output.paste(shape, (int(w/2)+i*w, (int(h*3/4))*j), shape)
 
     elif mode == RIGHT_SQUARE:
-        for j in range(int(y/h)+2):
-            for i in range(int(x/w)):
+        for j in range(math.ceil(y/h)+1):
+            for i in range(n):
                 output.paste(shape, (w*i, h*j), shape)
 
     elif mode == RIGHT_DIAMOND:
-        for j in range(-1, int(y/h)+4):
+        for j in range(-1, math.ceil(y/h)+3):
             if not j % 2:
-                for i in range(int(x/w)+2):
+                for i in range(n+2):
                     output.paste(shape, (w*i, int(h/2)*j), shape)
             else:
-                for i in range(-1, int(x/w)+2):
+                for i in range(-1, n+2):
                     output.paste(shape, (int(w/2)+i*w, (int(h/2))*j), shape)
 
     return output
