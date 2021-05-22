@@ -132,16 +132,11 @@ def tessellate(shape: Image.Image, mode: int = 0, dim: tuple = (1920, 1080),
     shape = shape.resize((w, h))
 
     if mode == EQUILATERAL or mode == RIGHT_SCALENE:
-        for j in range(-1, math.ceil(y/h)+1):
-            # use 2 options to offset the pattern
+        for j in range(-1, math.ceil(y/h)+1, 2):
             # start at -1 so left and upper edges are filled
-            if not j % 2:
-                # TODO: Can we make this more efficient (i.e. not %2, by doing step = 2)
-                for i in range(n+1):
-                    output.paste(shape, (w*i, (int(h*3/4))*j), shape)
-            else:
-                for i in range(-1, n+1):
-                    output.paste(shape, (int(w/2)+i*w, (int(h*3/4))*j), shape)
+            for i in range(-1, n+1):
+                output.paste(shape, (int(w/2)+i*w, (int(h*3/4))*j), shape)
+                output.paste(shape, ((w)*i, (int(h*3/4))*(j+1)), shape)
 
     elif mode == RIGHT_SQUARE:
         for j in range(math.ceil(y/h)+1):
@@ -149,25 +144,17 @@ def tessellate(shape: Image.Image, mode: int = 0, dim: tuple = (1920, 1080),
                 output.paste(shape, (w*i, h*j), shape)
 
     elif mode == RIGHT_DIAMOND:
-        for j in range(-1, math.ceil(y/h)+3):
-            if not j % 2:
-                for i in range(n+2):
-                    output.paste(shape, (w*i, int(h/2)*j), shape)
-            else:
-                for i in range(-1, n+2):
-                    output.paste(shape, (int(w/2)+i*w, (int(h/2))*j), shape)
+        for j in range(-1, math.ceil(y/h)+3, 2):
+            for i in range(-1, n):
+                output.paste(shape, (w*i, int(h/2)*(j+1)), shape)
+                output.paste(shape, (int(w/2)+i*w, (int(h/2))*j), shape)
 
     return output
 
 
 def kaleidoscope(img: Image.Image, mode=EQUILATERAL,
                  windowX: int = 600, windowY: int = 600) -> Image.Image:
-    '''
-    mode = 0 (equilateral)
-           1 (right-scalene)
-           2 (right-isoceles, square)
-           3 (right-isoceles, diamond)
-    '''
+
     triangle = make_triangle(img, mode)
     unit = make_unit(triangle, mode)
 
