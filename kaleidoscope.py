@@ -129,7 +129,7 @@ def tessellate(shape: Image.Image, mode: int = 0, dim: tuple = (1920, 1080),
 
     w = int(a*ratio)
     h = int(b*ratio)
-    shape = shape.resize((w, h))
+    shape = shape.resize((w, h), Image.NEAREST)
 
     if mode == EQUILATERAL or mode == RIGHT_SCALENE:
         for j in range(-1, math.ceil(y/h)+1, 2):
