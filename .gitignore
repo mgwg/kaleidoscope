@@ -2,8 +2,7 @@ test.jpg
 test_images/*
 images.py
 test.py
-__pycache__
-__pycache__/arrayIm.cpython-38.pyc
-__pycache__/arrayIm.cpython-38.pyc
+*.pyc
+__pycache__/*
 test.txt
 output/*
