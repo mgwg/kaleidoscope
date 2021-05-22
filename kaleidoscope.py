@@ -77,7 +77,7 @@ def make_trapezoid(triangle: Image.Image, mode: int) -> Image.Image:
     # add a 2 pixel offset to get rid of
     # white gap between bottom and middle triangles
     rotated = rotated.crop((rotated.size[0]-w, 0, rotated.size[0], h))
-    output.paste(rotated, box=(0, h-2), mask=rotated)
+    output.paste(rotated, box=(0, h-3), mask=rotated)
 
     return output
 
@@ -153,12 +153,12 @@ def tessellate(shape: Image.Image, mode: int = 0, dim: tuple = (1920, 1080),
 
 
 def kaleidoscope(img: Image.Image, mode=EQUILATERAL,
-                 windowX: int = 600, windowY: int = 600) -> Image.Image:
+                 windowX: int = 1920, windowY: int = 1080, n = 5) -> Image.Image:
 
     triangle = make_triangle(img, mode)
     unit = make_unit(triangle, mode)
 
-    return tessellate(unit, (windowX, windowY), 5, mode)
+    return tessellate(unit, mode, (windowX, windowY), n)
 
 
 

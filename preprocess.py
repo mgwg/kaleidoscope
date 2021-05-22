@@ -2,7 +2,7 @@ from kaleidoscope import kaleidoscope
 from PIL import Image
 import math
 
-def gen_images(imagePath: str, 
+def gen_images(imagePath: str, dispDim: tuple = (1920, 1080),
                mode = 0, fineness: int = 200, n: int = 2) -> list:
     '''
     outputPath must include slash at end, if ends in 
@@ -24,7 +24,7 @@ def gen_images(imagePath: str,
         for i in x:
             print(i, j)
             square = img.crop((0+i, 0+j, s+i, s+j))
-            output = kaleidoscope(square, mode)
+            output = kaleidoscope(square, mode, dispDim[0], dispDim[1], n)
             outputs.append(output)
     return outputs
 
