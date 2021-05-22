@@ -23,23 +23,27 @@
     <img src="" id="imagebox">
 
     <script>
+
+        var imagedata = JSON.parse('{{ imagedata | tojson | safe }}')
+
+
         var offsetX = 0
         var offsetY = 0
 
         imagebox = document.getElementById("imagebox")
-        imagebox.src = "./getimage?x=" + Math.round(0) + "&y=" + Math.round(0) +
-                       "&width=" + window.innerWidth + "&height=" + window.innerHeight
+        imagebox.src = "data:image/png;base64," + imagedata[0]
 
-        function click(e)  {
+        document.onmousemove = move
+
+        function move(e)  {
             var mouseX = e.clientX + window.scrollX
             var mouseY = e.clientY + window.scrollY
 
-            // Set image source
-            imagebox.src = "./getimage?x=" + Math.round(mouseX) + "&y=" + Math.round(mouseY) + 
-                           "&width=" + window.innerWidth + "&height=" + window.innerHeight
-        }
+            var offsetFactor = Math.sqrt(mouseX*mouseX + mouseY*mouseY) / Math.sqrt(window.innerWidth*window.innerWidth + window.innerHeight*window.innerHeight)
+            // normalized offset factor to load the correct image
 
-        document.addEventListener("click", click); // add event
+            imagebox.src = "data:image/png;base64," + imagedata[Math.floor(imagedata.length * offsetFactor)]
+        }
 
     </script>
 

@@ -161,7 +161,7 @@ def tessellate(shape: Image.Image, dim: tuple = (1920, 1080),
 
 
 def kaleidoscope(img: Image.Image, mode=EQUILATERAL,
-                 windowX: int = 1920, windowY: int = 1080) -> Image.Image:
+                 windowX: int = 600, windowY: int = 600) -> Image.Image:
     '''
     mode = 0 (equilateral)
            1 (right-scalene)

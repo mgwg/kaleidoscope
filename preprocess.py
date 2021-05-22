@@ -1,8 +1,9 @@
 from kaleidoscope import kaleidoscope
 from PIL import Image
+import math
 
-def gen_images(imagePath: str, outputPath: str, 
-               mode = 0, fineness: int = 10, n: int = 5) -> None:
+def gen_images(imagePath: str, 
+               mode = 0, fineness: int = 200, n: int = 2) -> list:
     '''
     outputPath must include slash at end, if ends in 
     mode = kaleidoscope mode
@@ -10,9 +11,7 @@ def gen_images(imagePath: str, outputPath: str,
     n = number of base units in one kaleidoscope image
     '''
 
-    # handle path to folders
-    if outputPath and outputPath[-1] != '/':
-        outputPath += '/'
+    outputs = []
 
     img = Image.open(imagePath)
     w, h = img.size
@@ -23,9 +22,11 @@ def gen_images(imagePath: str, outputPath: str,
 
     for j in y:
         for i in x:
+            print(i, j)
             square = img.crop((0+i, 0+j, s+i, s+j))
             output = kaleidoscope(square, mode)
-            output.save(outputPath+'{}_{}.png'.format(i, j))
+            outputs.append(output)
+    return outputs
 
 def preprocess(image_name: str,
                x: int, y: int, width: int, height: int) -> Image.Image:
