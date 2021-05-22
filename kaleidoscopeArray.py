@@ -1,7 +1,7 @@
 import math
 from arrayIm import *
 from scipy import ndimage
-from PIL import Image, ImageDraw, ImageOps
+
 # Enumerations
 EQUILATERAL = 0
 RIGHT_SCALENE = 1
@@ -109,43 +109,30 @@ def tessellate(img: np.array, dim: tuple = (1080, 1920),
     dim = dimensions of final image as (height, width)
     n = number of horizontal repetitions
     '''
-    output = makeIm(dim)
-
     y, x = dim
     b, a, _ = img.shape
     ratio = (x/n)/a
 
-    w = int(a*ratio)
     h = int(b*ratio)
+    w = int(a*ratio)
     img = cv2.resize(img, (w, h))
 
-    if mode == EQUILATERAL or mode == RIGHT_SCALENE:
-        for j in range(-1, int(y/h)+2):
-            # use 2 options to offset the pattern
-            # start at -1 so left and upper edges are filled
-            if not j % 2:
-                # TODO: Can we make this more efficient (i.e. not %2, by doing step = 2)
-                for i in range(int(x/w)+2):
-                    #output.paste(img, (w*i, (int(h*3/4))*j), img)
-                    output = pasteIm(output, img, ((int(h*3/4))*j, w*i))
-            elif j % 2:
-                for i in range(-1, int(x/w)+2):
-                    output = pasteIm(output, img, ((int(h*3/4))*j, int(w/2)+i*w))
-                    #output.paste(img, (int(w/2)+i*w, (int(h*3/4))*j), img)
+    if mode == 0 or mode == 1:
+        base = makeIm((int(h*6/4)-1, w))
+        row2 = np.tile(img, (2,1))
+        base = pasteIm(base, img, (0,0))
+        base = pasteIm(base, row2, (-int(h*3/4), -int(w/2)))
 
-    elif mode == RIGHT_SQUARE:
-        for j in range(int(y/w)+2):
-            for i in range(int(x/h)):
-                output = pasteIm(output, img, (h*j, w*i))  
+    elif mode == 2:
+        base = img
 
-    elif mode == RIGHT_DIAMOND: 
-        for j in range(-1, int(y/h)+4):
-            if not j % 2:
-                for i in range(int(x/w)+2):
-                    output = pasteIm(output, img, (int(h/2)*j, w*i))
-            elif j % 2:
-                for i in range(-1, int(x/w)+2):
-                    output = pasteIm(output, img, (int(h/2)*j, int(w/2)+i*w))
+    elif mode == 3:
+        base = img
+        base = paste(base, img, (-int(h/2), -int(w/2)))
+
+    #repeat the base unit, and crop to fit dimensions
+    output = np.tile(base, (math.ceil(y/h),n,1))
+    output = cropIm(output, (0, 0, x, y))
 
     return output
 
