@@ -114,7 +114,7 @@ def make_unit(shape: Image.Image, mode: int = EQUILATERAL) -> Image.Image:
     return output
 
 
-def tessellate(shape: Image.Image, s: int, dim: tuple = (1920, 1080),
+def tessellate(shape: Image.Image, dim: tuple = (1920, 1080),
                n: int = 5, mode: int = 0) -> Image.Image:
     '''
     dim = dimensions of final image
@@ -139,7 +139,7 @@ def tessellate(shape: Image.Image, s: int, dim: tuple = (1920, 1080),
                 # TODO: Can we make this more efficient (i.e. not %2, by doing step = 2)
                 for i in range(int(x/w)+2):
                     output.paste(shape, (w*i, (int(h*3/4))*j), shape)
-            elif j % s:
+            else:
                 for i in range(-1, int(x/w)+2):
                     output.paste(shape, (int(w/2)+i*w, (int(h*3/4))*j), shape)
 
@@ -153,7 +153,7 @@ def tessellate(shape: Image.Image, s: int, dim: tuple = (1920, 1080),
             if not j % 2:
                 for i in range(int(x/w)+2):
                     output.paste(shape, (w*i, int(h/2)*j), shape)
-            elif j % s:
+            else:
                 for i in range(-1, int(x/w)+2):
                     output.paste(shape, (int(w/2)+i*w, (int(h/2))*j), shape)
 
@@ -171,7 +171,7 @@ def kaleidoscope(img: Image.Image, mode=EQUILATERAL,
     triangle = make_triangle(img, mode)
     unit = make_unit(triangle, mode)
 
-    return tessellate(unit, img.size[0], (windowX, windowY), 5, mode)
+    return tessellate(unit, (windowX, windowY), 5, mode)
 
 
 def preprocess(image_name: str,
