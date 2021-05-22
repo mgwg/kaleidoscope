@@ -34,11 +34,23 @@
         imagebox.src = "data:image/png;base64," + imagedata[0]
 
         document.onmousemove = move
+        document.ontouchmove = touchmove
 
         function move(e)  {
             var mouseX = e.clientX + window.scrollX
             var mouseY = e.clientY + window.scrollY
 
+            updateimg(mouseX, mouseY)
+        }
+
+        function touchmove(e)  {
+            var mouseX = e.touches[0].clientX + window.scrollX
+            var mouseY = e.touches[0].clientY + window.scrollY
+
+            updateimg(mouseX, mouseY)
+        }
+
+        function updateimg(mouseX, mouseY) {
             var offsetFactor = Math.sqrt(mouseX*mouseX + mouseY*mouseY) / Math.sqrt(window.innerWidth*window.innerWidth + window.innerHeight*window.innerHeight)
             // normalized offset factor to load the correct image
 
