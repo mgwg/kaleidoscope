@@ -114,7 +114,7 @@ def make_unit(shape: Image.Image, mode: int = EQUILATERAL) -> Image.Image:
     return output
 
 
-def tessellate(shape: Image.Image, mode: int = 0, dim: tuple = (1920, 1080),
+def tessellate(shape: Image.Image, mode: int = 0, dim: tuple = (600, 600),
                n: int = 5) -> Image.Image:
     '''
     dim = dimensions of final image
@@ -158,7 +158,7 @@ def kaleidoscope(img: Image.Image, mode=EQUILATERAL,
     triangle = make_triangle(img, mode)
     unit = make_unit(triangle, mode)
 
-    return tessellate(unit, (windowX, windowY), 5, mode)
+    return tessellate(unit, mode, (windowX, windowY), 5)
 
 
 

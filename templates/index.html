@@ -26,6 +26,8 @@
 
         var imagedata = JSON.parse('{{ imagedata | tojson | safe }}')
 
+        var numY = imagedata.length
+        var numX = imagedata[0].length
 
         var offsetX = 0
         var offsetY = 0
@@ -52,9 +54,13 @@
 
         function updateimg(mouseX, mouseY) {
             var offsetFactor = Math.sqrt(mouseX*mouseX + mouseY*mouseY) / Math.sqrt(window.innerWidth*window.innerWidth + window.innerHeight*window.innerHeight)
+            
+            var indexX = Math.floor(mouseX / window.innerWidth * numX)
+            var indexY = Math.floor(mouseY / window.innerHeight * numY)
+            
             // normalized offset factor to load the correct image
 
-            imagebox.src = "data:image/png;base64," + imagedata[Math.floor(imagedata.length * offsetFactor)]
+            imagebox.src = "data:image/png;base64," + imagedata[indexY][indexX]
         }
 
     </script>
