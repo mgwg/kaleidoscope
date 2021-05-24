@@ -6,17 +6,20 @@ import io
 
 app = Flask("")
 
-print("Images buffering...")
+print("Images generating...")
 images = gen_images("test.jpg")
 
 b64images = []
 
+print("Images buffering...")
 img: Image.Image
-for img in images:
+for imglist in images:
+    b64images.append([])
+    for img in imglist:
 
-    buffered = io.BytesIO()
-    img.save(buffered, format="PNG")
-    b64images.append(base64.b64encode(buffered.getvalue()).decode("utf-8"))
+        buffered = io.BytesIO()
+        img.save(buffered, format="PNG")
+        b64images[-1].append(base64.b64encode(buffered.getvalue()).decode("utf-8"))
 
 
 @app.route('/')
