@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style>
+
+  .hexagon,
+  .hexagon * {transform:translateZ(0);}
+
+  .triangle {display:inline-block; overflow:hidden;}
+  .triangle >.in,
+  .triangle >.in >.in {
+  	width:400px; height:400px;
+  }
+  .triangle >.in {
+  	overflow:hidden;
+	transform-origin:left top;
+	transform:scaleX(1.2247448713915892) scaleY(0.707106) rotate3d(0,0,1,45deg);
+	position:relative;
+  }
+
+  .triangle >.in >.in {
+	transform-origin:left top;
+	transform:rotate3d(0,0,1,-45deg) scale3d(0.8164965809277259,1,1) scale3d(1,1.4142135623730951,1) rotate3d(0,0,1,-30deg);
+	position:absolute; left:0; top:0;
+  }
+  .triangle:nth-child(2n) >.in >.in {
+  	transform:rotate3d(0,0,1,-45deg) scale3d(0.8164965809277259,1,1) scale3d(1,1.4142135623730951,1) rotate3d(0,0,1,-30deg) scale3d(-1,1,1);
+  }
+
+  /* MAKE HEXAGON FROM TRIANGLES*/
+  .hexagon {
+  	width:800px;height:692.8203230275509px;
+  	position:relative;
+  }
+  .hexagon >.triangle {position:absolute; left:400px;/* 800 / 2 */ top:346.41016151377545px;/* 692.8203230275509 / 2 */ transform-origin:left top;}
+  .hexagon >.triangle:nth-child(1) {transform:rotate3d(0,0,1,30deg);}
+  .hexagon >.triangle:nth-child(2) {transform:rotate3d(0,0,1,-30deg);}
+  .hexagon >.triangle:nth-child(3) {transform:rotate3d(0,0,1,-90deg);}
+  .hexagon >.triangle:nth-child(4) {transform:rotate3d(0,0,1,-150deg);}
+  .hexagon >.triangle:nth-child(5) {transform:rotate3d(0,0,1,-210deg);}
+  .hexagon >.triangle:nth-child(6) {transform:rotate3d(0,0,1,-270deg);}
+
+
+  .kalideo {display:block; width:1200px;/* 6*(400.cos(60º)) */ height:692.8203230275509px; position:relative; overflow:hidden;}
+  .hexagon {position:absolute; left:0; top:0;}
+  .hexagon:nth-child(1) {margin-left:-400px;}
+  .hexagon:nth-child(1) .triangle:nth-child(5),
+  .hexagon:nth-child(1) .triangle:nth-child(6) {display:none;}
+  .hexagon:nth-child(2) {margin-left:200px; margin-top:-346.41016151377545px;}/*200/tan(60PI/180)*/
+  .hexagon:nth-child(2) .triangle:nth-child(3),
+  .hexagon:nth-child(2) .triangle:nth-child(4),
+  .hexagon:nth-child(2) .triangle:nth-child(5) {display:none;}
+  .hexagon:nth-child(3) {margin-left:200px; margin-top:346.41016151377545px;}
+  .hexagon:nth-child(3) .triangle:nth-child(1),
+  .hexagon:nth-child(3) .triangle:nth-child(2),
+  .hexagon:nth-child(3) .triangle:nth-child(6) {display:none;}
+  .hexagon:nth-child(4) {margin-left:800px;}
+  .hexagon:nth-child(4) .triangle:nth-child(2),
+  .hexagon:nth-child(4) .triangle:nth-child(3) {display:none;}
+
+  </style>
+  <script src="prefixfree.min.js"></script>
+</head>
+<body>
+	<div class="kalideo">
+        
+		<div class="hexagon">
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+		</div>
+		<div class="hexagon">
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+		</div>
+		<div class="hexagon">
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+		</div>
+		<div class="hexagon">
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(pizza.png);"></div></div></div></div>
+		</div>
+        
+	</div>
+	<script src="jquery-2.1.0.min.js"></script>
+	<script>
+	(function () {
+		$kalideo = $('.kalideo');
+	    var W = $kalideo.width();
+	    var H = $kalideo.height();
+	    var L = $kalideo.offset().left;
+	    var T = $kalideo.offset().top;
+
+        /* MAKE DIMENTSIONS VARIABLE */
+	    var imageW = 585;
+	    var imageH = 638;
+	    $kalideo.mousemove(function (e) {
+	    	var xmin = 200; /* 400 / 2 */
+	    	var xmax = imageW - xmin;
+
+	    	var ymin = 0;
+	    	var ymax = imageH - 400*Math.sin(60*Math.PI/180); /* imageH - 400*sin(60º) */
+
+	    	var x = xmin + ((e.pageX - L) / W) * (xmax - (xmin));
+	    	var y = ymin + ((e.pageY - T) / H) * (ymax - ymin);
+	    	setValue(x, y);
+	    });
+
+	    var $divs = $('.triangle >.in >.in >div');
+	    function setValue(x, y) {
+	    	$divs.css('transform', 'translate3d(' + -x + 'px,' + -y + 'px,0)');
+	    }
+	    $(function (e) {
+	    	console.log('domready', e);
+	    })
+	    setValue(200,0)
+	}).call(this);
+	</script>
+</body>
+</html>
