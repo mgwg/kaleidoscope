@@ -2,7 +2,7 @@ from kaleidoscope import kaleidoscope
 from PIL import Image
 
 def gen_images(imagePath: str, dispDim: tuple = (1920, 1080),
-               mode = 0, fineness: int = 200, n: int = 5) -> list:
+               mode = 0, fineness: int = 50, n: int = 4) -> list:
     '''
     outputPath must include slash at end, if ends in 
     mode = kaleidoscope mode
