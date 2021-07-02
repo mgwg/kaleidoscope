@@ -34,7 +34,7 @@
   	width:800px;height:692.8203230275509px;
   	position:relative;
   }
-  .hexagon >.triangle {position:absolute; left:400px;/* 800 / 2 */ top:346.41016151377545px;/* 692.8203230275509 / 2 */ transform-origin:left top;}
+  .hexagon >.triangle {position:absolute; left:400px; top:346.41016151377545px; transform-origin:left top;}
   .hexagon >.triangle:nth-child(1) {transform:rotate3d(0,0,1,30deg);}
   .hexagon >.triangle:nth-child(2) {transform:rotate3d(0,0,1,-30deg);}
   .hexagon >.triangle:nth-child(3) {transform:rotate3d(0,0,1,-90deg);}
@@ -42,8 +42,8 @@
   .hexagon >.triangle:nth-child(5) {transform:rotate3d(0,0,1,-210deg);}
   .hexagon >.triangle:nth-child(6) {transform:rotate3d(0,0,1,-270deg);}
 
-
-  .kalideo {display:block; width:1200px;/* 6*(400.cos(60º)) */ height:692.8203230275509px; position:relative; overflow:hidden;}
+  /* SIZE OF FINAL DISPLAY AND POSITION OF HEXAGONS DEFINED HERE */
+  .kaleido {display:block; width:1200px; height:692.8203230275509px; position:relative; overflow:hidden;}
   .hexagon {position:absolute; left:0; top:0;}
   .hexagon:nth-child(1) {margin-left:-400px;}
   .hexagon:nth-child(1) .triangle:nth-child(5),
@@ -64,10 +64,10 @@
   <script src="prefixfree.min.js"></script>
 </head>
 <body>
-	<div class="kalideo">
+	<div class="kaleido">
         <--! num hexagon classes correspond to number of hexagons in display -->
 		<div class="hexagon">
-            <--! width, height of triangles, make variable -->
+            <--! width, height of triangles, make variable-->
 			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
 			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
 			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
@@ -99,26 +99,28 @@
 			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
 			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
 		</div>
-        
 	</div>
 	<script src="jquery-2.1.0.min.js"></script>
 	<script>
 	(function () {
-		$kalideo = $('.kalideo');
-	    var W = $kalideo.width();
-	    var H = $kalideo.height();
-	    var L = $kalideo.offset().left;
-	    var T = $kalideo.offset().top;
+		$kaleido = $('.kaleido');
+        // W, H are dimensions of display, L, T are top left margin offsets
+	    var W = $kaleido.width();
+	    var H = $kaleido.height();
+	    var L = 0;//$kaleido.offset().left;
+	    var T = 0;//$kaleido.offset().top;
+        console.log(W, H, L, T)
 
-        /* MAKE DIMENTSIONS VARIABLE */
+        /* MAKE DIMENTSIONS VARIABLE -- w, h are of source image*/
 	    var imageW = 585;
 	    var imageH = 638;
-	    $kalideo.mousemove(function (e) {
-	    	var xmin = 200; /* 400 / 2 */
+	    $kaleido.mousemove(function (e) {
+            /* max dimensions mouse can move to, must constrain so it's always within triangle bounds*/
+	    	var xmin = 200;
 	    	var xmax = imageW - xmin;
 
 	    	var ymin = 0;
-	    	var ymax = imageH - 400*Math.sin(60*Math.PI/180); /* imageH - 400*sin(60º) */
+	    	var ymax = imageH - 400*Math.sin(60*Math.PI/180);
 
 	    	var x = xmin + ((e.pageX - L) / W) * (xmax - (xmin));
 	    	var y = ymin + ((e.pageY - T) / H) * (ymax - ymin);
