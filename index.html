@@ -29,7 +29,7 @@
   	transform:rotate3d(0,0,1,-45deg) scale3d(0.8164965809277259,1,1) scale3d(1,1.4142135623730951,1) rotate3d(0,0,1,-30deg) scale3d(-1,1,1);
   }
 
-  /* MAKE HEXAGON FROM TRIANGLES*/
+  /* MAKE HEXAGON FROM TRIANGLES, 3, 4, 5 are the bottom 6 triangles from the left*/
   .hexagon {
   	width:800px;height:692.8203230275509px;
   	position:relative;
@@ -43,29 +43,29 @@
   .hexagon >.triangle:nth-child(6) {transform:rotate3d(0,0,1,-270deg);}
 
   /* MAKE KALEIDOSCOPE FROM HEXAGONS */
-  .kalideo {display:block; width:1200px; height:692.8203230275509px; position:relative; overflow:hidden;}
+  .kaleido {display:block; width:2500px; height:1385.64px; position:relative; overflow:hidden; }
   .hexagon {position:absolute; left:0; top:0;}
-  .hexagon:nth-child(1) {margin-left:-400px;}
-  .hexagon:nth-child(1) .triangle:nth-child(5),
-  .hexagon:nth-child(1) .triangle:nth-child(6) {display:none;}
-  .hexagon:nth-child(2) {margin-left:200px; margin-top:-346.41016151377545px;}
-  .hexagon:nth-child(2) .triangle:nth-child(3),
-  .hexagon:nth-child(2) .triangle:nth-child(4),
-  .hexagon:nth-child(2) .triangle:nth-child(5) {display:none;}
-  .hexagon:nth-child(3) {margin-left:200px; margin-top:346.41016151377545px;}
-  .hexagon:nth-child(3) .triangle:nth-child(1),
-  .hexagon:nth-child(3) .triangle:nth-child(2),
-  .hexagon:nth-child(3) .triangle:nth-child(6) {display:none;}
-  .hexagon:nth-child(4) {margin-left:800px;}
-  .hexagon:nth-child(4) .triangle:nth-child(2),
-  .hexagon:nth-child(4) .triangle:nth-child(3) {display:none;}
+  .hexagon:nth-child(1) {margin-left:-400px;margin-top: 692.8203230275509px;}
+  /* .hexagon:nth-child(1) .triangle:nth-child(5),
+  .hexagon:nth-child(1) .triangle:nth-child(6) {display:none;} */
+  .hexagon:nth-child(2) {margin-left:-400px;}
+  .hexagon:nth-child(3) {margin-left:200px; margin-top:-346.41016151377545px;}
+  .hexagon:nth-child(4) {margin-left:200px; margin-top:346.41016151377545px;}
+  .hexagon:nth-child(5) {margin-left:200px; margin-top:1039.23px;}
+  .hexagon:nth-child(6) {margin-left:800px; }
+  .hexagon:nth-child(7) {margin-left:800px; margin-top:692.8203230275509px;}
+  .hexagon:nth-child(8) {margin-left:1400px; margin-top:-346.41016151377545px;}
+  .hexagon:nth-child(9) {margin-left:1400px; margin-top:346.41016151377545px;}
+  .hexagon:nth-child(10) {margin-left:1400px; margin-top:1039.23px;}
+  .hexagon:nth-child(11) {margin-left:2000px; }
+  .hexagon:nth-child(12) {margin-left:2000px; margin-top:692.8203230275509px;}
 
   </style>
   <script src="prefixfree.min.js"></script>
 </head>
 <body>
 	<div class="kaleido">
-        <--! num hexagon classes correspond to number of hexagons in display -->
+        <!--  num hexagon classes correspond to number of hexagons in display --> 
 		<div class="hexagon">
             <--! width, height of triangles, make variable-->
 			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
@@ -98,7 +98,71 @@
 			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
 			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
 			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
-		</div>
+		</div> 
+        <div class="hexagon">
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+		</div> 
+        <div class="hexagon">
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+		</div> 
+        <div class="hexagon">
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+		</div> 
+        <div class="hexagon">
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+		</div> 
+        <div class="hexagon">
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+		</div> 
+        <div class="hexagon">
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+		</div> 
+        <div class="hexagon">
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+		</div> 
+        <div class="hexagon">
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+			<div class="triangle"><div class="in"><div class="in"><div style="position:absolute;left:0;top:0;width:585px;height:638px;background:url(ref2/pizza.png);"></div></div></div></div>
+		</div> 
 	</div>
 	<script src="jquery-2.1.0.min.js"></script>
 	<script>
@@ -107,8 +171,8 @@
         // W, H are dimensions of display, L, T are top left margin offsets
 	    var W = $kaleido.width();
 	    var H = $kaleido.height();
-	    var L = 0;//$kaleido.offset().left;
-	    var T = 0;//$kaleido.offset().top;
+	    var L = 0;
+	    var T = 0;
         console.log(W, H, L, T)
 
         /* MAKE DIMENTSIONS VARIABLE -- w, h are of source image*/
