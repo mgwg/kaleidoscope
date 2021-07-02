@@ -34,7 +34,7 @@
   	width:800px;height:692.8203230275509px;
   	position:relative;
   }
-  .hexagon >.triangle {position:absolute; left:400px;/* 800 / 2 */ top:346.41016151377545px;/* 692.8203230275509 / 2 */ transform-origin:left top;}
+  .hexagon >.triangle {position:absolute; left:400px; top:346.41016151377545px; transform-origin:left top;}
   .hexagon >.triangle:nth-child(1) {transform:rotate3d(0,0,1,30deg);}
   .hexagon >.triangle:nth-child(2) {transform:rotate3d(0,0,1,-30deg);}
   .hexagon >.triangle:nth-child(3) {transform:rotate3d(0,0,1,-90deg);}
@@ -42,13 +42,13 @@
   .hexagon >.triangle:nth-child(5) {transform:rotate3d(0,0,1,-210deg);}
   .hexagon >.triangle:nth-child(6) {transform:rotate3d(0,0,1,-270deg);}
 
-
-  .kalideo {display:block; width:1200px;/* 6*(400.cos(60º)) */ height:692.8203230275509px; position:relative; overflow:hidden;}
+  /* MAKE KALEIDOSCOPE FROM HEXAGONS */
+  .kalideo {display:block; width:1200px; height:692.8203230275509px; position:relative; overflow:hidden;}
   .hexagon {position:absolute; left:0; top:0;}
   .hexagon:nth-child(1) {margin-left:-400px;}
   .hexagon:nth-child(1) .triangle:nth-child(5),
   .hexagon:nth-child(1) .triangle:nth-child(6) {display:none;}
-  .hexagon:nth-child(2) {margin-left:200px; margin-top:-346.41016151377545px;}/*200/tan(60PI/180)*/
+  .hexagon:nth-child(2) {margin-left:200px; margin-top:-346.41016151377545px;}
   .hexagon:nth-child(2) .triangle:nth-child(3),
   .hexagon:nth-child(2) .triangle:nth-child(4),
   .hexagon:nth-child(2) .triangle:nth-child(5) {display:none;}
@@ -114,11 +114,11 @@
 	    var imageW = 585;
 	    var imageH = 638;
 	    $kalideo.mousemove(function (e) {
-	    	var xmin = 200; /* 400 / 2 */
+	    	var xmin = 200; 
 	    	var xmax = imageW - xmin;
 
 	    	var ymin = 0;
-	    	var ymax = imageH - 400*Math.sin(60*Math.PI/180); /* imageH - 400*sin(60º) */
+	    	var ymax = imageH - 400*Math.sin(60*Math.PI/180);
 
 	    	var x = xmin + ((e.pageX - L) / W) * (xmax - (xmin));
 	    	var y = ymin + ((e.pageY - T) / H) * (ymax - ymin);
