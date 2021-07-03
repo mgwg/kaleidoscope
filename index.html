@@ -165,6 +165,9 @@
 	</div>
 	<script src="jquery-2.1.0.min.js"></script>
 	<script>
+		images = ["test.jpg", "pizza.png"]
+		img_counter = 0;
+
 	(function () {
 		$kaleido = $('.kaleido');
         // W, H are dimensions of display, L, T are top left margin offsets
@@ -173,7 +176,7 @@
 
 		var imageW, imageH;
 		var image = new Image();
-		image.src = "test.jpg";
+		image.src = images[img_counter];
 		image.onload = function() {
 			imageW = image.naturalWidth;
 			imageH = image.naturalHeight;
@@ -202,93 +205,20 @@
 		$('*').click(function(event) {
 			if (this === event.target) { // only fire this handler on the original element
 				// alert('clicked');
+				
+				// change images
+				img_counter++;
+				img_counter %= images.length;
 
-				image.src = "pizza.png";
+				image.src = images[img_counter];
 				image.onload = function() {
 					imageW = image.naturalWidth;
 					imageH = image.naturalHeight;
 				};
-				
-				document.getElementById("bgImg0").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg1").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg2").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg3").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg4").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg5").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg6").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg7").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg8").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg9").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
 
-				document.getElementById("bgImg10").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg11").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg12").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg13").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg14").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg15").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg16").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg17").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg18").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg19").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-
-				document.getElementById("bgImg20").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg21").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg22").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg23").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg24").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg25").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg26").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg27").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg28").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg29").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-
-				document.getElementById("bgImg30").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg31").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg32").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg33").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg34").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg35").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg36").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg37").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg38").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg39").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-
-				document.getElementById("bgImg40").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg41").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg42").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg43").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg44").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg45").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg46").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg47").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg48").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg49").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-
-				document.getElementById("bgImg50").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg51").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg52").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg53").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg54").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg55").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg56").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg57").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg58").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg59").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-
-				document.getElementById("bgImg60").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg61").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg62").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg63").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg64").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg65").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg66").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg67").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg68").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg69").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-
-				document.getElementById("bgImg70").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-				document.getElementById("bgImg71").style = "position:absolute;left:0;top:0;display:inline-block;content:url(pizza.png);"
-
+				for (var x = 0; x < 72; x++) {
+					document.getElementById("bgImg" + x).style = "position:absolute;left:0;top:0;display:inline-block;content:url(" + images[img_counter] + ");"
+				}
 			}
 		});
 
