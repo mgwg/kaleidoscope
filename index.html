@@ -170,8 +170,6 @@
         // W, H are dimensions of display, L, T are top left margin offsets
 	    var W = $kaleido.width();
 	    var H = $kaleido.height();
-	    var L = 0;
-	    var T = 0;
 
 		var image = new Image();
 		var imageW, imageH;
@@ -189,8 +187,8 @@
 	    	var ymin = 0;
 	    	var ymax = imageH - 400*Math.sin(60*Math.PI/180);
 
-	    	var x = xmin + ((e.pageX - L) / W) * (xmax - (xmin));
-	    	var y = ymin + ((e.pageY - T) / H) * (ymax - ymin);
+	    	var x = xmin + (e.pageX / W) * (xmax - xmin);
+	    	var y = ymin + (e.pageY / H) * (ymax - ymin);
 	    	setValue(x, y);
 	    });
 
@@ -199,6 +197,12 @@
 
 	    	$divs.css('transform', 'translate3d(' + -x + 'px,' + -y + 'px,0)');
 	    }
+
+		// document.getElementById("myImage").src = 'img/new-image.jpg';
+
+		// $("#myImage").attr("src", 'img/new-image.jpg').load(function(){
+		// 	alert('New image loaded!');
+		// });
 
 	    $(function (e) {
 	    	console.log('domready', e);
