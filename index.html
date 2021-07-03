@@ -198,15 +198,11 @@
 	    	$divs.css('transform', 'translate3d(' + -x + 'px,' + -y + 'px,0)');
 	    }
 
-		// document.getElementById("myImage").src = 'img/new-image.jpg';
 
-		// $("#myImage").attr("src", 'img/new-image.jpg').load(function(){
-		// 	alert('New image loaded!');
-		// });
 		$('*').click(function(event) {
 			if (this === event.target) { // only fire this handler on the original element
 				// alert('clicked');
-				// document.getElementById("srcImg").src = 'pizza.png';
+
 				image.src = "pizza.png";
 				image.onload = function() {
 					imageW = image.naturalWidth;
