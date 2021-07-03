@@ -195,11 +195,24 @@
 	    	setValue(x, y);
 	    });
 
+
 	    var $divs = $('.triangle >.in >.in >div');
 	    function setValue(x, y) {
 
 	    	$divs.css('transform', 'translate3d(' + -x + 'px,' + -y + 'px,0)');
 	    }
+
+		document.body.ontouchmove = function(e) {
+			var xmin = 200;
+	    	var xmax = imageW - xmin;
+
+	    	var ymin = 0;
+	    	var ymax = imageH - 400*Math.sin(60*Math.PI/180);
+
+	    	var x = xmin + (e.touches[0].pageX / W) * (xmax - xmin);
+	    	var y = ymin + (e.touches[0].pageY / H) * (ymax - ymin);
+	    	setValue(x, y);
+		}
 
 
 		$('*').click(function(event) {
@@ -214,6 +227,16 @@
 				image.onload = function() {
 					imageW = image.naturalWidth;
 					imageH = image.naturalHeight;
+					
+					// update cursor
+					var xmin = 200;
+					var xmax = imageW - xmin;
+
+					var ymin = 0;
+					var ymax = imageH - 400*Math.sin(60*Math.PI/180);
+					var x = xmin + (event.pageX / W) * (xmax - xmin);
+					var y = ymin + (event.pageY / H) * (ymax - ymin);
+					setValue(x, y);
 				};
 
 				for (var x = 0; x < 72; x++) {
