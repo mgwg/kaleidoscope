@@ -163,9 +163,28 @@
 		</div>
 	</div>
 	<script src="jquery-2.1.0.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script>
-		images = ["test.jpg", "test2.jpg", "test3.jpg"]
-		img_counter = 0;
+
+	var keyword = "mountains";
+	var img_counter = 0;
+	var images = ["test.jpg"];
+
+	$(document).ready(function(){
+		$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
+		{
+			tags: keyword,
+			tagmode: "any",
+			format: "json"
+		},
+		function(data) {
+			for (var x = 0; x < data.items.length; x++) {
+					var image_scr = data.items[x]['media']['m'].replace("_m", "_b");
+					images.push(image_scr);
+			}
+		});
+	});
+
 
 	(function () {
 		$kaleido = $('.kaleido');
@@ -241,6 +260,12 @@
 				for (var x = 0; x < 72; x++) {
 					document.getElementById("bgImg" + x).style = "position:absolute;left:0;top:0;display:inline-block;content:url(" + images[img_counter] + ");"
 				}
+
+				// remove placeholder img if still in the list
+				if (images[0] == 'test.jpg'){
+					images.splice(0, 1);
+				}
+
 			}
 		});
 
