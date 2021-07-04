@@ -2,7 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>Kaleidoscope</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
 
   .hexagon,
@@ -76,9 +77,30 @@
 		margin-bottom: 8px;
 		font-size: 17px;
 	}
+
+	.topnav button{
+		float: left;
+		width: 3%;
+		padding: 6px;
+		background: #F3BCE7;
+		color: white;
+		font-size: 17px;
+		border: none;
+		margin-top: 8px;
+		margin-left: 8px;
+		margin-bottom: 8px;
+		cursor: pointer;
+	}
+
+	.topnav button:hover {
+		background: #E195CD;
+	}
+
+
   </style>
   <script src="prefixfree.min.js"></script>
 </head>
+
 <body>
 	<div class="kaleido">
         <!--  num hexagon classes correspond to number of hexagons in display--> 
@@ -181,7 +203,7 @@
 	</div>
 	<div class="topnav">
 		<input type="text" id="search" placeholder="Search...">
-		<button onclick="getVal();">Search</button>
+		<button onclick="getVal();"><i class="fa fa-search"></i></button>
 	</div>
 	<script src="jquery-2.1.0.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -193,23 +215,24 @@
 
 	function getVal(){
 		keyword = document.getElementById("search").value;
-
-		$(document).ready(function(){
-			$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
-			{
-				tags: keyword,
-				tagmode: "any",
-				format: "json"
-			},
-			function(data) {
-				images = [];
-				for (var x = 0; x < data.items.length; x++) {
-						var image_scr = data.items[x]['media']['m'].replace("_m", "_b");
-						images.push(image_scr);
-						var img_n = data.items[x]['title'];
-				}
+		if (keyword){
+			$(document).ready(function(){
+				$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
+				{
+					tags: keyword,
+					tagmode: "any",
+					format: "json"
+				},
+				function(data) {
+					images = [];
+					for (var x = 0; x < data.items.length; x++) {
+							var image_scr = data.items[x]['media']['m'].replace("_m", "_b");
+							images.push(image_scr);
+							var img_n = data.items[x]['title'];
+					}
+				});
 			});
-		});
+		}
 	}
 
 	(function () {
