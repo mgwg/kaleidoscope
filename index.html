@@ -203,11 +203,19 @@
 	</div>
 	<div class="topnav">
 		<input type="text" id="search" placeholder="Search...">
-		<button onclick="getVal();"><i class="fa fa-search"></i></button>
+		<button id="searchButton" onclick="getVal();"><i class="fa fa-search"></i></button>
 	</div>
 	<script src="jquery-2.1.0.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script>
+
+	var input = document.getElementById("search");
+	input.addEventListener("keyup", function(event) {
+	if (event.keyCode === 13) {
+		event.preventDefault();
+		document.getElementById("searchButton").click();
+	}
+	});
 
 	var keyword;
 	var img_counter = 0;
@@ -256,16 +264,14 @@
 
 	    	var ymin = 0;
 	    	var ymax = imageH - 360*Math.sin(Math.PI/3);
-
+			// e.pageX, e.pageY is current position
 	    	var x = xmin + (e.pageX / W) * (xmax - xmin);
 	    	var y = ymin + (e.pageY / H) * (ymax - ymin);
 	    	setValue(x, y);
 	    });
 
-
 	    var $divs = $('.triangle >.in >.in >div');
 	    function setValue(x, y) {
-
 	    	$divs.css('transform', 'translate3d(' + -x + 'px,' + -y + 'px,0)');
 	    }
 
@@ -283,7 +289,7 @@
 
 
 		$('*').click(function(event) {
-			if (this === event.target) { // only fire this handler on the original element
+			if (this === event.target && event.pageX<W && event.pageY<H) { // only fire this handler on the original element
 
 				// change images
 				img_counter++;
